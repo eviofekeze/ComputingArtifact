@@ -11,4 +11,4 @@ This can be installed from pip by running the following command on your command 
 
 **The Jupyter Notebook**
 
-The jupyter notebook can be run from top to bottom with any errors
+The jupyter notebook can be run from top to bottom without any errors
