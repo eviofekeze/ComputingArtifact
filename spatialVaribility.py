@@ -193,10 +193,10 @@ class variogramModelError:
         
         
         if (self.type_ == 'L'):
-            #Solve for place less than Using Linear 
+            #Solve for index less than Using Linear 
             self.Vm[Ix] = self.c*self.h[Ix]/self.a  # Linear 
         elif (self.type_ == 'S'):
-            #Sovel for place less than a using Sperical
+            #Sovel for index less than a using Sperical
             self.Vm[Ix] = self.c*(3*self.h[Ix]/(2*self.a) - 0.5*(self.h[Ix]/self.a)**3) # Spherical 
         
         Ix2 = np.where(self.h>self.a) # lags greater than a
