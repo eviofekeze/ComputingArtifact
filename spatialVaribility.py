@@ -25,7 +25,8 @@ class semivariogram:
             semi_var = semivariance
             cov_ = variance
             autocorr_ = autocorrelation
-        
+
+        __solve(self, dist, acc)
         """
 
         self.dist = dist #transect of interest
@@ -79,6 +80,7 @@ class semivariogram2t:
         Output:
             G = semivariogram
         
+	__solve(self, x_dist, y_dist, var)
         """
 
         self.x_dist = x_dist # The first transect
@@ -133,6 +135,7 @@ class variogramModel:
         OUTPUT:
             Vm = Modelled varigram
         
+	solve(self, h,c,a,type_)
         """
         
         self.h = h
@@ -224,7 +227,7 @@ def model_variogram(h,c,a,type_):
        
         OUTPUT:
             V = The modeled Variogram
-        
+     model_variogram(h,c,a,type_)   
     """
     V = np.zeros(len(h)) # initialize variogram as zeros of lenght h
     Ix = np.where(h <= a) # grab index of all location before the range
@@ -254,7 +257,7 @@ def model_variogram_error(h,V,c,a,type_):
         OUTPUT:
             RMSE = The root mean squared error of the modelled values of the semivariogram
             V = The modeled Variogram
-        
+     model_variogram_error(h,V,c,a,type_)  
     """
     Vm = np.zeros(len(h)) # initialize variogram as zeros of lenght h
     Ix = np.where(h <= a)  # grab index of all location before the range
@@ -281,6 +284,8 @@ def plot_variogram(dist, acc, figsize = (15,6), color = 'k', label = None):
         acc: Measurement at lag distance
     OUTPUT:
         Scatter plot of semivariogram 
+
+	plot_variogram(dist, acc, figsize = (15,6), color = 'k', label = None)
     """
     temp = semivariogram() # instantiate semivariogram class
     temp.solve(dist,acc) # solve semivariogram
@@ -299,6 +304,8 @@ def plot_covariance(dist,acc,figsize = (15,6), color = 'k', label = None):
         acc: Measurement at lag distance
     OUTPUT:
         Scatter plot of covariance
+	
+	plot_covariance(dist,acc,figsize = (15,6), color = 'k', label = None)
     """
     temp = semivariogram() #instantiate semivariogram class
     temp.solve(dist,acc) # solve semivariogram
@@ -318,6 +325,7 @@ def plot_autocorr(dist, acc, figsize = (15,6), color = 'k', label = None):
         acc: Measurement at lag distance
     OUTPUT:
         Scatter plot of autocorrelation
+	plot_autocorr(dist, acc, figsize = (15,6), color = 'k', label = None)
     """
     temp = semivariogram() #instantiate semivariogram class
     temp.solve(dist,acc) # solve semivariogram
